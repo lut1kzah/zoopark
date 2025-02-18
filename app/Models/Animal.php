@@ -9,10 +9,9 @@ class Animal extends Model
     protected $fillable = [
         'name',
         'description',
-        'photo',
         'continent',
     ];
     public function type(){
-        return $this->belongsTo(Type::class);
+        return $this->belongsTo(Category::class);
     }
 }

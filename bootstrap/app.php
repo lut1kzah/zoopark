@@ -12,7 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->redirectTo( fn () => throw new \App\Exceptions\Api\ApiException('Unauthorized', 401));
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

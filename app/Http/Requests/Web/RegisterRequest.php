@@ -11,7 +11,7 @@ class RegisterRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,25 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:32',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|max:255|confirmed',
+        ];
+    }
+    public function messages(): array{
+        return [
+            'name.required' => 'Поле имя обязательное!!!',
+
+            'email.required' => 'Поле почта обязательное!!!',
+            'password.required' => 'Поле пороль обязательное!!!',
+
+            'name.max' => 'Имя должна состоять максимум из 32 символов!',
+            'email.max' => 'Почта должна состоять максимум из 32 символов!',
+            'password.max' => 'Пороль должна состоять максимум из 255 символов!',
+
+            'email.email' => 'Электронная почта должна иметь формат эл.адресса ',
+            'email.unique' => 'Данная эл.почта занята другим пользователем, введите свою НЕзарегестрированную почту',
+            'password.confirmed' => 'Пороли не совпадают',
         ];
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Exceptions\ApiException;
+use App\Exceptions\Api\ApiException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\RegisterRequest;
 use App\Models\Role;
@@ -12,13 +12,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-
 class AuthController extends Controller
 {
     public function register(RegisterRequest $request){
         $role_user = Role::where('code','user')->first();
         $path = null;
 
+        if ($request->has('avatar')) {
+            $path = $request->file('avatar')->store('avatars', 'public');
+        }
 
         $user = User::create([
             ...$request->validated(),'avatar' => $path, 'role_id' => $role_user->id,
@@ -34,6 +36,7 @@ class AuthController extends Controller
     }
     //Аутентификация
     public function login(Request $request){
+
         if (!Auth::attempt($request->only('email', 'password'))){
             throw new ApiException('Unauthorized',401);
         }
