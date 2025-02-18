@@ -8,15 +8,22 @@ use Illuminate\Http\Request;
 
 class AnimalController extends Controller
 {
+    // Получить список всех животных
     public function index()
     {
-        $animals = Animal::all(); // Получаем всех животных из базы
-        return view('animals.index', compact('animals')); // Передаем данные в представление
+        $animals = Animal::all();
+        return response()->json($animals); // Возвращаем данные в формате JSON
     }
 
+    // Получить информацию о конкретном животном
     public function show($id)
     {
-        $animal = Animal::findOrFail($id); // Находим животное по ID
-        return view('animals.show', compact('animal')); // Передаем данные в представление
+        $animal = Animal::find($id);
+
+        if (!$animal) {
+            return response()->json(['message' => 'Животное не найдено'], 404); // Если животное не найдено
+        }
+
+        return response()->json($animal); // Возвращаем данные в формате JSON
     }
 }

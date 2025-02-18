@@ -24,5 +24,5 @@ Route::middleware('auth:api')->group(function () {
 Route::middleware('auth:api')->ApiResource('/categories', CategoryController::class)->except(['index', 'show']);
 Route::get('/categories',[CategoryController::class,'index']);
 Route::get('/categories/{id}',[CategoryController::class,'show']);
-Route::get('/animals', [AnimalController::class, 'index'])->name('animals.index');
-Route::get('/animals/{id}', [AnimalController::class, 'show'])->name('animals.show');
+Route::get('/animals', [AnimalController::class, 'index']); // Список всех животных
+Route::get('/animals/{id}', [AnimalController::class, 'show']); // Информация о конкретном животном

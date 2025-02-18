@@ -14,15 +14,15 @@ class AnimalSeeder extends Seeder
     public function run(): void
     {
         Animal::create([
-            'species' => 'Лев',
+            'name' => 'Лев',
             'description' => 'Крупное хищное животное семейства кошачьих.',
-            'habitat' => 'Африка',
+            'continent' => 'Африка',
         ]);
 
         Animal::create([
-            'species' => 'Пингвин',
+            'name' => 'Пингвин',
             'description' => 'Нелетающая птица, обитающая в холодных регионах.',
-            'habitat' => 'Антарктида',
+            'continent' => 'Антарктида',
         ]);
     }
 }

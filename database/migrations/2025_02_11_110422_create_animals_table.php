@@ -15,9 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->json('photo');
             $table->string('continent');
-            $table->foreignId('type_id')->constrained('types','id');
             $table->timestamps();
         });
     }

@@ -11,7 +11,4 @@ class Animal extends Model
         'description',
         'continent',
     ];
-    public function type(){
-        return $this->belongsTo(Type::class);
-    }
 }
