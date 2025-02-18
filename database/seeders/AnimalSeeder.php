@@ -17,12 +17,14 @@ class AnimalSeeder extends Seeder
             'name' => 'Лев',
             'description' => 'Крупное хищное животное семейства кошачьих.',
             'continent' => 'Африка',
+            'photo'=> '123',
         ]);
 
         Animal::create([
             'name' => 'Пингвин',
             'description' => 'Нелетающая птица, обитающая в холодных регионах.',
             'continent' => 'Антарктида',
+            'photo' => '122',
         ]);
     }
 }

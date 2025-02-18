@@ -10,5 +10,6 @@ class Animal extends Model
         'name',
         'description',
         'continent',
+        'photo',
     ];
 }

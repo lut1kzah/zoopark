@@ -17,7 +17,11 @@ return new class extends Migration
             $table->string('description');
             $table->string('continent');
             $table->timestamps();
+            $table->string('photo')->nullable();
         });
+
+            // Поле для хранения пути к фото
+
     }
 
     /**
@@ -26,5 +30,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('animals');
+        Schema::table('animals', function (Blueprint $table) {
+            $table->dropColumn('photo');
+        });
     }
+
+
 };
