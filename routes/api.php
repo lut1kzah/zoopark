@@ -4,6 +4,7 @@ use \App\Http\Controllers\Api\AuthController;
 use \App\Http\Controllers\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AnimalController;
 //аутентификацию и выход (маршруты) + регистрация
 
 
@@ -23,3 +24,5 @@ Route::middleware('auth:api')->group(function () {
 Route::middleware('auth:api')->ApiResource('/categories', CategoryController::class)->except(['index', 'show']);
 Route::get('/categories',[CategoryController::class,'index']);
 Route::get('/categories/{id}',[CategoryController::class,'show']);
+Route::get('/animals', [AnimalController::class, 'index'])->name('animals.index');
+Route::get('/animals/{id}', [AnimalController::class, 'show'])->name('animals.show');
