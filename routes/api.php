@@ -25,4 +25,4 @@ Route::middleware('auth:api')->ApiResource('/categories', CategoryController::cl
 Route::get('/categories',[CategoryController::class,'index']);
 Route::get('/categories/{id}',[CategoryController::class,'show']);
 Route::get('/animals', [AnimalController::class, 'index']); // Список всех животных
-Route::get('/animals/{id}', [AnimalController::class, 'show']); // Информация о конкретном животном
+Route::get('/animals/{id}', [AnimalController::class, 'show']); // Информация о конкретном животномлл
